@@ -7,3 +7,9 @@
 
 결국 지금은 문제없이 잘 해나가는중! 
 처음으로 해보는거 이왕 최선을 다해보자 정현진!
+
+--------------------------------------
+If you want see my application code
+Move to lib directory.
+
+environment setting in 
