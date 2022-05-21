@@ -12,4 +12,4 @@
 If you want see my application code
 Move to lib directory.
 
-environment setting in 
+environment setting in pubspec.yaml 
