@@ -23,7 +23,7 @@ class calendar extends StatelessWidget {
         fontWeight: FontWeight.bold,
       ),
       dataSource: MeetingDateSource(getAppointment()),
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: Colors.white,
       monthViewSettings: MonthViewSettings(
         appointmentDisplayMode: MonthAppointmentDisplayMode.appointment,
         showAgenda: true,

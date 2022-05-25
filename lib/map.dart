@@ -67,10 +67,6 @@ class _MapPageState extends State<MapPage> {
     mymarker = [];
     mycircle = [];
     for (Todo t in todos) {
-      print(t.from);
-      print(t.to);
-      print(t.latitude);
-      print(t.longitude);
       mymarker.add(Marker(
         markerId: MarkerId('$t.id'),
         draggable: true,
@@ -88,7 +84,6 @@ class _MapPageState extends State<MapPage> {
         strokeColor: Colors.blue.shade100.withOpacity(0.1),
       ));
     }
-    print(mymarker.length);
   }
 
   @override
@@ -105,6 +100,30 @@ class _MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('예정된 일정과 당신의 위치를 한눈에 보세요!'),
+        actions: <Widget>[
+          IconButton(
+            onPressed: () => {addTodo()},
+            icon: Icon(Icons.add),
+            color: Colors.white,
+          ),
+          SizedBox(
+            width: 30,
+          ),
+          IconButton(
+            onPressed: () => {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => calendar(todos))),
+            },
+            icon: Icon(Icons.calendar_today),
+            color: Colors.white,
+          ),
+          SizedBox(
+            width: 30,
+          ),
+        ],
+      ),
       body: GoogleMap(
         myLocationButtonEnabled: true,
         mapType: MapType.normal,
@@ -119,6 +138,7 @@ class _MapPageState extends State<MapPage> {
       bottomNavigationBar: BottomAppBar(
         color: Colors.transparent,
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             IconButton(
               onPressed: () => {
@@ -127,21 +147,6 @@ class _MapPageState extends State<MapPage> {
               icon: Icon(Icons.menu),
               color: Colors.white,
             ),
-            Spacer(),
-            IconButton(
-              onPressed: () => {addTodo()},
-              icon: Icon(Icons.add),
-              color: Colors.white,
-            ),
-            Spacer(),
-            IconButton(
-              onPressed: () => {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => calendar(todos))),
-              },
-              icon: Icon(Icons.calendar_today),
-              color: Colors.white,
-            )
           ],
         ),
       ),

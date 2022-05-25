@@ -6,7 +6,7 @@ import 'check.dart';
 import 'map.dart';
 import 'todo.dart';
 
-final Uri _url = Uri.parse('https://github.com/HyunJunSik/flexible');
+final Uri _url = Uri.parse('https://github.com/HyunJunSik/flexible_schudeuler');
 
 void main() {
   runApp(const MyApp());
