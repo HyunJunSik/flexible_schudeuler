@@ -75,6 +75,7 @@ flutter:
     - asset/icon_calendar.jpg
     - asset/icon_leftarrow.jpg
     - asset/icon_rightarrow.jpg
+    - asset/myloc.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

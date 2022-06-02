@@ -101,15 +101,12 @@ class _MapPageState extends State<MapPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('예정된 일정과 당신의 위치를 한눈에 보세요!'),
+        title: const Text('my schedule\'s location'),
         actions: <Widget>[
           IconButton(
             onPressed: () => {addTodo()},
             icon: Icon(Icons.add),
             color: Colors.white,
-          ),
-          SizedBox(
-            width: 30,
           ),
           IconButton(
             onPressed: () => {
@@ -118,9 +115,6 @@ class _MapPageState extends State<MapPage> {
             },
             icon: Icon(Icons.calendar_today),
             color: Colors.white,
-          ),
-          SizedBox(
-            width: 30,
           ),
         ],
       ),
@@ -132,6 +126,7 @@ class _MapPageState extends State<MapPage> {
         onMapCreated: (GoogleMapController controller) {
           googleMapController = controller;
         },
+        zoomControlsEnabled: false,
         markers: Set.from(mymarker),
         circles: Set.from(mycircle),
       ),
@@ -143,6 +138,7 @@ class _MapPageState extends State<MapPage> {
             IconButton(
               onPressed: () => {
                 _showBottomSheet(context),
+                setState(() {}),
               },
               icon: Icon(Icons.menu),
               color: Colors.white,
@@ -159,13 +155,21 @@ class _MapPageState extends State<MapPage> {
         ),
         onPressed: () async {
           Position position = await _determinePosition();
+          BitmapDescriptor markerbitmap = await BitmapDescriptor.fromAssetImage(
+              ImageConfiguration(), "asset/myloc.png");
           googleMapController.animateCamera(CameraUpdate.newCameraPosition(
               CameraPosition(
                   target: LatLng(position.latitude, position.longitude),
                   zoom: 16)));
-          mymarker.add(Marker(
-              markerId: const MarkerId('currentLocation'),
-              position: LatLng(position.latitude, position.longitude)));
+          mymarker.add(
+            Marker(
+                markerId: const MarkerId('currentLocation'),
+                icon: markerbitmap,
+                infoWindow:
+                    InfoWindow(title: 'mylocation', snippet: 'mylocation'),
+                position: LatLng(position.latitude, position.longitude)),
+          );
+          setState(() {});
         },
       ),
     );
@@ -235,9 +239,9 @@ class _MapPageState extends State<MapPage> {
       setState(() {
         print('addreturn');
         todos.add(returnTodo);
+        saveTodo();
+        reload();
       });
-      reload();
-      saveTodo();
     } else {
       print('dont save todo');
     }
@@ -324,11 +328,11 @@ class _MapPageState extends State<MapPage> {
                   onPressed: () {
                     setState(() {
                       todos.remove(todo);
+                      saveTodo();
+                      reload();
                     });
                     Navigator.pop(ctx);
                     print('delete');
-                    saveTodo();
-                    reload();
                   },
                   child: Text("ㅇㅇ 지울겨"),
                 )

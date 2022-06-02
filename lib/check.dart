@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'dart:ui';
 import 'package:vector_math/vector_math.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +21,7 @@ class _CheckState extends State<Check> {
     // TODO: implement build
     return Scaffold(
         appBar: AppBar(
+          title: Text('Check List'),
           backgroundColor: Color(0xFF325DCE),
         ),
         body: Column(
@@ -35,7 +35,7 @@ class _CheckState extends State<Check> {
               child: Text(
                 '일정을 수행하셨다면 체크해주세요!\n (일정에 위치도 포함되어있다면 해당 위치 300미터 이내에 사용자가 존재해야 체크가 가능합니다.)\n',
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
             Flexible(

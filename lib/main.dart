@@ -41,13 +41,18 @@ class MainState extends State<Main> {
     List todoList = jsonDecode(stringTodo);
     for (var todo in todoList) {
       setState(() {
-        Todo ex = Todo();
+        Todo ex = Todo(
+          description: "",
+          longitude: 0.0,
+          latitude: 0.0,
+          from: DateTime.now(),
+          to: DateTime.now(),
+          id: 0,
+          status: false,
+          title: "",
+        );
         ex.fromJson(todo);
-        if (ex.latitude == null && ex.from.hour == null) {
-          prefs.remove('todo');
-        } else {
-          todos.add(ex);
-        }
+        todos.add(ex);
       });
     }
     setState(() {});
