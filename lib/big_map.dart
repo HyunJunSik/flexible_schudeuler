@@ -17,6 +17,7 @@ Future<Position> _deter() async {
 
 class _BigMapState extends State<BigMap> {
   Position position;
+  String selectedAddress;
   List<Marker> myMarker = [];
   final Completer<GoogleMapController> _controller = Completer();
   LatLng selectedLocation;
@@ -31,6 +32,7 @@ class _BigMapState extends State<BigMap> {
     setup();
   }
 
+  @override
   void dispose() {
     super.dispose();
   }
