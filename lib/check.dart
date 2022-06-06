@@ -33,7 +33,7 @@ class _CheckState extends State<Check> {
               ),
               height: 120,
               child: Text(
-                '일정을 수행하셨다면 체크해주세요!\n (일정에 위치도 포함되어있다면 해당 위치 300미터 이내에 사용자가 존재해야 체크가 가능합니다.)\n',
+                '일정을 수행하셨다면 체크해주세요!\n (일정에 위치도 포함되어있다면 해당 위치 \n200미터 이내에 사용자가 존재해야 체크가 가능합니다.)\n',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
@@ -132,7 +132,7 @@ class _CheckState extends State<Check> {
                             sindeltaLo *
                             sindeltaLa);
                     double distance = 2 * radius * asin(squareRoot);
-                    if (distance <= 0.3) {
+                    if (distance <= 0.2) {
                       setState(() {
                         todo.status = true;
                         yes = SnackBar(content: Text('일정 수행이 완료되었습니다.'));
@@ -140,7 +140,7 @@ class _CheckState extends State<Check> {
                     } else {
                       yes = SnackBar(
                           content: Text(
-                              '정하신 위치와 사용자의 거리가 300m 이상이므로 수행을 완료하실 수 없습니다.'));
+                              '정하신 위치와 사용자의 거리가 200m 이상이므로 수행을 완료하실 수 없습니다.'));
                     }
                   }
                 }

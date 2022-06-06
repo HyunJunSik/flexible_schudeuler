@@ -92,7 +92,10 @@ class MainState extends State<Main> {
                 InkWell(
                     child: Image.asset('asset/icon_socialmedia.jpg',
                         width: 170, height: 170),
-                    onTap: () {}),
+                    onTap: () async {
+                      const url = 'https://owscheduler.netlify.app/';
+                      await launch(url, forceSafariVC: false);
+                    }),
               ],
             )),
             Row(
