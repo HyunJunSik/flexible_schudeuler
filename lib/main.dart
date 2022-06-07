@@ -93,8 +93,8 @@ class MainState extends State<Main> {
                     child: Image.asset('asset/icon_socialmedia.jpg',
                         width: 170, height: 170),
                     onTap: () async {
-                      const url = 'https://owscheduler.netlify.app/';
-                      await launch(url, forceSafariVC: false);
+                      const url = 'https://overcomeweakness.netlify.app/';
+                      await launch(url);
                     }),
               ],
             )),

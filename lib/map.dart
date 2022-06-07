@@ -160,7 +160,7 @@ class _MapPageState extends State<MapPage> {
           googleMapController.animateCamera(CameraUpdate.newCameraPosition(
               CameraPosition(
                   target: LatLng(position.latitude, position.longitude),
-                  zoom: 16)));
+                  zoom: 14)));
           mymarker.add(
             Marker(
                 markerId: const MarkerId('currentLocation'),
